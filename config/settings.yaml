@@ -1,13 +1,16 @@
 test_mode: both   # options: judge | expected | both
 bot:
-  model: "llama2"       # Bot LLM
+  #model: "llama2" # Bot LLM llama3.2:latest tinyllama:latest  phi:latest
+  # gpt-oss:120b-cloud  gpt-oss:20b-cloud
+  model: "gpt-oss:20b-cloud"
   endpoint: "http://localhost:5000/ask"
 judge:
   enabled: true
-  model: "mistral"      # Judge LLM
+  #model: "mistral"      # Judge LLM
+  model: "gpt-oss:120b-cloud"
   endpoint: "http://localhost:11434/api/generate"
 expected:
   enabled: true
 report:
   format: "html"
-  email: "qa-team@company.com"
+  email: "reddy.siva27@gmail.com"
