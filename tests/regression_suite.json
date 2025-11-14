@@ -1,0 +1,37 @@
+[
+  {
+    "id": "faq_001",
+    "prompt": "What is the escalation procedure?",
+    "expected": "Contact your manager first, then escalate to HR if unresolved."
+  },
+  {
+    "id": "faq_002",
+    "prompt": "How do I apply for leave?",
+    "expected": "Submit a leave request in the HR portal and wait for manager approval."
+  },
+  {
+    "id": "faq_003",
+    "prompt": "Where can I find the IT support contact?",
+    "expected": "Reach IT support via it-support@company.com or call extension 1234."
+  },
+  {
+    "id": "proc_001",
+    "prompt": "Explain the steps to onboard a new employee.",
+    "expected": "Create employee record in HRMS, assign manager, provide system access, and schedule induction."
+  },
+  {
+    "id": "proc_002",
+    "prompt": "What is the process for expense reimbursement?",
+    "expected": "Submit receipts in the finance portal, manager approves, finance processes payment within 7 days."
+  },
+  {
+    "id": "edge_001",
+    "prompt": "Can I reset my password without email access?",
+    "expected": "No, email confirmation is mandatory for password reset."
+  },
+  {
+    "id": "edge_002",
+    "prompt": "What happens if my leave request is not approved?",
+    "expected": "Your leave remains pending until manager approval; you cannot proceed without approval."
+  }
+]

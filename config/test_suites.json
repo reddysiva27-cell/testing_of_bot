@@ -1,0 +1,18 @@
+{
+  "suites": [
+    {
+      "id": "sample",
+      "description": "Quick smoke tests for onboarding and sanity check",
+      "file": "tests/sample_test.json",
+      "enabled": true,
+      "priority": "smoke"
+    },
+    {
+      "id": "regression",
+      "description": "Full regression suite covering FAQs, procedures, and edge cases",
+      "file": "tests/regression_suite.json",
+      "enabled": true,
+      "priority": "nightly"
+    }
+  ]
+}

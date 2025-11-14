@@ -1,0 +1,13 @@
+test_mode: both   # options: judge | expected | both
+bot:
+  model: "llama2"       # Bot LLM
+  endpoint: "http://localhost:5000/ask"
+judge:
+  enabled: true
+  model: "mistral"      # Judge LLM
+  endpoint: "http://localhost:11434/api/generate"
+expected:
+  enabled: true
+report:
+  format: "html"
+  email: "qa-team@company.com"

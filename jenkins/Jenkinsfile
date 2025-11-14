@@ -1,0 +1,69 @@
+pipeline {
+    agent any
+
+    environment {
+        PYTHON_ENV = "venv"
+        CONFIG_FILE = "config/settings.yaml"
+        TEST_SUITE = "config/test_suites.json"
+        CONTEXT_DOCS = "docs/faqs.md docs/procedures.md"
+        REPORT_DIR = "reports"
+    }
+
+    triggers {
+        // Nightly run at 2 AM
+        cron('H 2 * * *')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Setup Python Environment') {
+            steps {
+                sh '''
+                    python3 -m venv ${PYTHON_ENV}
+                    . ${PYTHON_ENV}/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Bot Tests') {
+            steps {
+                sh '''
+                    . ${PYTHON_ENV}/bin/activate
+                    python src/test_executor.py ${CONFIG_FILE} ${TEST_SUITE} "${CONTEXT_DOCS}"
+                '''
+            }
+        }
+
+        stage('Archive Reports') {
+            steps {
+                archiveArtifacts artifacts: "${REPORT_DIR}/*.html, ${REPORT_DIR}/*.csv", fingerprint: true
+            }
+        }
+
+        stage('Email Report') {
+            steps {
+                emailext(
+                    subject: "Bot Test Execution Report",
+                    body: """<p>Hello QA Team,</p>
+                             <p>The nightly bot test run has completed.
+                             Please find the attached report.</p>""",
+                    to: "qa-team@company.com",
+                    attachmentsPattern: "${REPORT_DIR}/*.html"
+                )
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

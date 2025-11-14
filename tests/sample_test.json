@@ -1,0 +1,12 @@
+[
+  {
+    "id": "sample_001",
+    "prompt": "How do I reset my password?",
+    "expected": "Go to settings, click 'Reset Password', and confirm via email."
+  },
+  {
+    "id": "sample_002",
+    "prompt": "Who should I contact for HR queries?",
+    "expected": "Please contact the HR department via hr@company.com."
+  }
+]
